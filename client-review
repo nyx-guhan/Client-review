@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trusted by Clients</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .testimonial-container {
+            width: 800px;
+            position: relative;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .quote-mark {
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            font-size: 60px;
+            color: #4CAF50;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        .quote {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            padding-left: 40px;
+            position: relative;
+            max-width: 600px;
+        }
+        .author {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            margin-left:35px;
+        }
+        .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .author-name {
+            font-weight: bold;
+            color: #333;
+        }
+        .author-title {
+            color: #777;
+            font-size: 14px;
+        }
+        .navigation {
+            position: absolute;
+            bottom: 20px;
+            right: 190px;
+            display: flex;
+            justify-content: space-between;
+            width: 100px;
+        }
+        .nav-text {
+            color: #999;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .nav-text:hover {
+            color: #333;
+        }
+        .slide {
+            display: none;
+        }
+        .active-slide {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="testimonial-container">
+        <h1>Trusted by clients</h1>
+        <div class="slide active-slide">
+            <div class="quote-mark">"</div>
+            <p class="quote">The world is not standing still and only new approaches with individual vision are increasingly able to achieve the desired results. More than 15 years of experience have convinced us that the best priority is long-term prospects, customer trust and a solid reputation. We use experience, modern technology and safe solutions. We are building the future just for you.</p>
+            <div class="author">
+                <img src="https://via.placeholder.com/50" alt="Sebastian Westergren">
+                <div class="author-info">
+                    <span class="author-name">Sebastian Westergren</span>
+                    <span class="author-title">Development director</span>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="quote-mark">"</div>
+            <p class="quote">Innovation distinguishes between a leader and a follower. We believe in pushing boundaries and setting new standards in every field. Our clients' success is a testament to our commitment to excellence.</p>
+            <div class="author">
+                <img src="https://via.placeholder.com/50" alt="Anna Smith">
+                <div class="author-info">
+                    <span class="author-name">Anna Smith</span>
+                    <span class="author-title">Marketing Manager</span>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="quote-mark">"</div>
+            <p class="quote">Our mission is to deliver unparalleled value through innovation, quality, and sustainability. We thrive on challenges and constantly seek new ways to make a positive impact in the lives of our clients.</p>
+            <div class="author">
+                <img src="https://via.placeholder.com/50" alt="John Doe">
+                <div class="author-info">
+                    <span class="author-name">John Doe</span>
+                    <span class="author-title">CEO</span>
+                </div>
+            </div>
+        </div>
+        <div class="navigation">
+            <span class="nav-text" id="prev-slide">←</span>
+            <span class="nav-text" id="slide-number">01 / 03</span>
+            <span class="nav-text" id="next-slide">→</span>
+        </div>
+    </div>
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const prevSlide = document.getElementById('prev-slide');
+        const nextSlide = document.getElementById('next-slide');
+        const slideNumber = document.getElementById('slide-number');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active-slide', i === index);
+            });
+            slideNumber.textContent = `${String(index + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+        }
+
+        prevSlide.addEventListener('click', () => {
+            currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.length - 1;
+            showSlide(currentSlide);
+        });
+
+        nextSlide.addEventListener('click', () => {
+            currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
+            showSlide(currentSlide);
+        });
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
